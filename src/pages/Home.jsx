@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NewsContext } from "../context/NewsContext";
 
-import Navbar from "../Components/Navbar";
+import Navbar from "../components/Navbar";
 import BreakingTicker from "../components/BreakingTicker";
 import HeroSection from "../components/HeroSection";
 import CategoryNav from "../components/CategoryNav";
