@@ -6,8 +6,6 @@ const categories = [
   { label: "Technology", value: "technology" },
   { label: "Business", value: "business" },
   { label: "Sports", value: "sports" },
-  { label: "Entertainment", value: "entertainment" },
-  { label: "Health", value: "health" },
   { label: "Science", value: "science" },
 ];
 

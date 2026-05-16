@@ -1,11 +1,17 @@
 import { useState, useEffect, createContext } from "react";
-import { fetchTopHeadlines, fetchTrendingNews, searchNews } from "../services/newsAPI";
+import {
+  fetchTopHeadlines,
+  fetchTrendingNews,
+  searchNews,
+} from "../services/newsAPI";
 
 export const NewsContext = createContext();
 
 export const NewsProvider = ({ children }) => {
   const [articles, setArticles] = useState([]);
   const [trending, setTrending] = useState([]);
+  const [entertainmentNews, setEntertainmentNews] = useState([]);
+  const [healthNews, setHealthNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("technology");
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,6 +27,18 @@ export const NewsProvider = ({ children }) => {
       }
     };
     loadTrending();
+  }, []);
+
+  useEffect(() => {
+    const loadCategorySections = async () => {
+      const entertainment = await fetchTopHeadlines("entertainment");
+      const health = await fetchTopHeadlines("health");
+
+      setEntertainmentNews(entertainment);
+      setHealthNews(health);
+    };
+
+    loadCategorySections();
   }, []);
 
   useEffect(() => {
@@ -45,7 +63,18 @@ export const NewsProvider = ({ children }) => {
 
   return (
     <NewsContext.Provider
-      value={{ articles, trending, loading, category, setCategory, searchQuery, setSearchQuery, error }}
+      value={{
+        articles,
+        trending,
+        entertainmentNews,
+        healthNews,
+        loading,
+        category,
+        setCategory,
+        searchQuery,
+        setSearchQuery,
+        error,
+      }}
     >
       {children}
     </NewsContext.Provider>

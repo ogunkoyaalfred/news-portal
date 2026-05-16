@@ -1,9 +1,5 @@
-
 import { formatDistanceToNow } from "date-fns";
-import {
-  Clock3,
-  ArrowUpRight,
-} from "lucide-react";
+import { Clock3, ArrowUpRight } from "lucide-react";
 
 const NewsCard = ({ article, featured }) => {
   return (
@@ -27,20 +23,15 @@ const NewsCard = ({ article, featured }) => {
           alt={article.title}
           loading="lazy"
           className={`
-            w-full
             object-cover
             transition-transform
             duration-700
             group-hover:scale-105
-            ${
-              featured
-                ? "h-105"
-                : "h-64"
-            }
+            ${featured ? "h-full w-1/2" : "h-64 w-full"}
           `}
         />
 
-        <div className="" />
+        <div />
 
         <div className="absolute top-4 left-4">
           <span
@@ -71,12 +62,9 @@ const NewsCard = ({ article, featured }) => {
             <Clock3 size={15} />
 
             <span>
-              {formatDistanceToNow(
-                new Date(article.publishedAt),
-                {
-                  addSuffix: true,
-                }
-              )}
+              {formatDistanceToNow(new Date(article.publishedAt), {
+                addSuffix: true,
+              })}
             </span>
           </div>
 
@@ -96,11 +84,7 @@ const NewsCard = ({ article, featured }) => {
             transition-colors
             duration-300
             group-hover:text-black/60
-            ${
-              featured
-                ? "text-3xl"
-                : "text-xl"
-            }
+            ${featured ? "text-3xl" : "text-xl"}
           `}
         >
           {article.title}
@@ -141,7 +125,6 @@ const NewsCard = ({ article, featured }) => {
             "
           >
             Read Full Story
-
             <ArrowUpRight
               size={16}
               className="

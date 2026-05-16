@@ -5,6 +5,7 @@ import Navbar from "../Components/Navbar";
 import BreakingTicker from "../components/BreakingTicker";
 import HeroSection from "../components/HeroSection";
 import CategoryNav from "../components/CategoryNav";
+import CategorySection from "../components/CategorySection";
 import SearchBar from "../components/SearchBar";
 import TrendingSidebar from "../components/TrendingSidebar";
 import LatestNews from "../components/LatestNews";
@@ -15,6 +16,8 @@ const Home = () => {
     articles,
     trending,
     loading,
+    entertainmentNews,
+    healthNews,
     category,
     setCategory,
     searchQuery,
@@ -27,19 +30,42 @@ const Home = () => {
       <BreakingTicker headlines={trending} />
       <Navbar />
 
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-around">
-          <CategoryNav active={category} setActive={setCategory} />
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-around">
+        <CategoryNav active={category} setActive={setCategory} />
 
-          <div className="my-6">
-            <SearchBar value={searchQuery} onChange={setSearchQuery} />
-          </div>
+        <div className="my-6">
+          <SearchBar
+            value={searchQuery}
+            onChange={setSearchQuery}
+            onSearch={() => {
+              const section = document.getElementById("latest-news");
+              if (section) section.scrollIntoView({ behavior: "smooth" });
+            }}
+          />
         </div>
+      </div>
 
       <main className="max-w-7xl mx-auto px-4 pb-8">
-
         {error && (
           <div className="bg-red-100 text-red-600 p-4 rounded-xl my-6">
             {error}
+          </div>
+        )}
+        {searchQuery && (
+          <div className="mt-8 flex items-center gap-3">
+            <h2 className="text-2xl font-black text-gray-800">
+              Results for <span className="text-blue-600">"{searchQuery}"</span>
+            </h2>
+            <span className="text-sm text-gray-400 font-medium">
+              {articles.length} {articles.length === 1 ? "story" : "stories"}{" "}
+              found
+            </span>
+            <button
+              onClick={() => setSearchQuery("")}
+              className="ml-auto text-sm text-red-400 hover:text-red-600 font-semibold transition"
+            >
+              Cancel Search ✕
+            </button>
           </div>
         )}
 
@@ -51,12 +77,23 @@ const Home = () => {
           <TrendingSidebar articles={trending} />
         </div>
 
-        <section className="mt-16">
+        <section
+          className="mt-16 border-y-4 border-y-blue-100 pb-30 pt-20"
+          id="latest-news"
+        >
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-4xl font-black text-blue-900">Latest News</h2>
           </div>
 
           <LatestNews articles={articles.slice(1)} loading={loading} />
+        </section>
+
+        <section className="border-b-4 border-b-blue-100 pb-30">
+          <CategorySection title="Entertainment" articles={entertainmentNews} />
+        </section>
+
+        <section>
+          <CategorySection title="Health" articles={healthNews} />
         </section>
 
         <section className="mt-20 bg-blue-400 text-white rounded-3xl p-10 text-center">

@@ -10,10 +10,16 @@ const Footer = () => {
   { label: "Technology", value: "technology" },
   { label: "Business", value: "business" },
   { label: "Sports", value: "sports" },
-  { label: "Entertainment", value: "entertainment" },
-  { label: "Health", value: "health" },
   { label: "Science", value: "science" },
 ];
+
+const handleCategoryClick = (value) => {
+  setCategory(value);
+  const section = document.getElementById("latest-news");
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
   return (
     <footer className="bg-blue-900 text-white mt-20">
@@ -29,7 +35,7 @@ const Footer = () => {
             {categories.map((cat) => (
               <p
                 key={cat.value}
-                onClick={() => setCategory(cat.value)}
+                onClick={() => handleCategoryClick(cat.value)}
                 className={`
         cursor-pointer transition-colors duration-200
         ${
