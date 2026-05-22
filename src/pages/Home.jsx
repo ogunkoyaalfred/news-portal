@@ -10,7 +10,7 @@ import SearchBar from "../components/SearchBar";
 import TrendingSidebar from "../components/TrendingSidebar";
 import LatestNews from "../components/LatestNews";
 import Footer from "../components/Footer";
-import BackToTop from "../Components/BackToTop";
+import BackToTop from "../components/BackToTop";
 
 const Home = () => {
   const {
