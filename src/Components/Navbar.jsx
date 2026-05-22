@@ -1,6 +1,5 @@
 import { Menu, Search } from "lucide-react";
 import { format } from "date-fns";
-import "./Navbar.css";
 
 const Navbar = () => {
   return (
@@ -9,7 +8,7 @@ const Navbar = () => {
         <span className="text-sm">
           {format(new Date(), "EEEE, do MMMM yyyy")}
         </span>
-        <h1 className="text-2xl md:text-3xl font-extrabold text-blue-900 tracking-tight logo">
+        <h1 className="text-2xl md:text-3xl font-extrabold text-blue-900 tracking-tight font-['Space_Grotesk']">
           NEWSWIRE
         </h1>
       </nav>
