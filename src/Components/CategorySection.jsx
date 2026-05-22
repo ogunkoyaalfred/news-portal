@@ -15,7 +15,7 @@ const CategorySection = ({ title, articles }) => {
   const hasMore = visibleCount < rest.length;
 
   return (
-    <section className="mt-20 mx-5">
+    <section className="mt-20">
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-4xl font-black text-blue-900">{`${title} News`}</h2>
       </div>
