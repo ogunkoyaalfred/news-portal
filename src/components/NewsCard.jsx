@@ -2,6 +2,9 @@ import { formatDistanceToNow } from "date-fns";
 import { Clock3, ArrowUpRight } from "lucide-react";
 
 const NewsCard = ({ article, featured }) => {
+  function formatText(htmlString) {
+    return <span dangerouslySetInnerHTML={{ __html: htmlString }} />;
+  }
   return (
     <article
       className="
@@ -77,7 +80,7 @@ const NewsCard = ({ article, featured }) => {
             text-[15px]
           "
         >
-          {article.description}
+          {formatText(article.description)}
         </p>
 
         <div className="mt-6 flex items-center justify-between">
