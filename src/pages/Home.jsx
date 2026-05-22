@@ -1,16 +1,16 @@
 import { useContext, useState } from "react";
 import { NewsContext } from "../context/NewsContext";
 
-import BreakingTicker from "../components/BreakingTicker";
-import HeroSection from "../components/HeroSection";
-import CategoryNav from "../components/CategoryNav";
-import CategorySection from "../components/CategorySection";
-import SearchBar from "../components/SearchBar";
-import TrendingSidebar from "../components/TrendingSidebar";
-import LatestNews from "../components/LatestNews";
-import Footer from "../components/Footer";
-import BackToTop from "../components/BackToTop";
-import Navbar from "../components/Navbar";
+import BreakingTicker from "../components/BreakingTicker.jsx";
+import HeroSection from "../components/HeroSection.jsx";
+import CategoryNav from "../components/CategoryNav.jsx";
+import CategorySection from "../components/CategorySection.jsx";
+import SearchBar from "../components/SearchBar.jsx";
+import TrendingSidebar from "../components/TrendingSidebar.jsx";
+import LatestNews from "../components/LatestNews.jsx";
+import Footer from "../components/Footer.jsx";
+import BackToTop from "../components/BackToTop.jsx";
+import Navbar from "../components/Navbar.jsx";
 
 const Home = () => {
   const {
