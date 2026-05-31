@@ -13,7 +13,7 @@ export const NewsProvider = ({ children }) => {
   const [entertainmentNews, setEntertainmentNews] = useState([]);
   const [healthNews, setHealthNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [category, setCategory] = useState("technology");
+  const [category, setCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState("");
 
